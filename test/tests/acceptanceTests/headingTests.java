@@ -56,4 +56,44 @@ public class headingTests {
                 ).toString()
         );
     }
+    
+    
+    @Test
+    public void caso2() {
+        Player[] players = new Player[3];
+        for (int i = 0; i < players.length; i++) {
+            players[i] = new Player();
+        }
+        
+        players[0].addCardToHand(new Pip(10));
+        players[0].addCardToHand(new King());
+        
+        players[1].addCardToHand(new Pip(10));
+        players[1].addCardToHand(new Pip(2));
+        players[1].addCardToHand(new Pip(6));
+        
+        players[2].addCardToHand(new Pip(8));
+        players[2].addCardToHand(new Pip(8));
+        players[2].addCardToHand(new Pip(5));
+        
+        Croupier croupier = new Croupier();
+        croupier.addCardToHand(new Pip(5));
+        croupier.addCardToHand(new Pip(10));
+        
+        Deck deck = new Deck();
+        deck.addRemainingCard(new Ace());
+        deck.addRemainingCard(new Pip(3));
+        deck.addRemainingCard(new King());
+        deck.addRemainingCard(new Pip(2));
+        
+        assertEquals("[Player1, Player3]", 
+                blackjack.utils.gameMethods.getWinners(
+                        players[0].getHand(),
+                        players[1].getHand(),
+                        players[2].getHand(),
+                        croupier.getHand(),
+                        deck.getRemainingCards()
+                ).toString()
+        );
+    }
 }
