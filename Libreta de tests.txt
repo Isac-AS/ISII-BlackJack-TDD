@@ -1,6 +1,8 @@
-En este segundo commit se pasa a la segunda fase iterativa del desarrollo
-guiado por la prueba donde se va a escribir el mínimo código necesario para 
-pasar el test planteado
+En este tercer commit se pasa a la tercera fase iterativa del desarrollo
+guiado por la prueba donde se va a refactorizar el código escrito. 
+Esto es, buscar duplicidades en el código, eliminarlas y hacer mejoras.
+(Este párrafo se ha escrito antes de proceder, después de la libreta de pruebas
+aparecen las notas de lo que se ha hecho, igual que en commit anterior)
 
 Pruebas:
 (las puebas unitarias vendrán prefijadas por "·" y las de aceptación por "#")
@@ -8,12 +10,11 @@ Pruebas:
 # Caso 2 -> [Player1, Player3]
 
 
-Se ha escrito el mínimo código y se han tomado un par de decisiones importantes
-más.
-Entre estas decisiones destaco el hecho de la creación de una clase abstracta
-"Card" para simplificar la interacción de las entidades con las cartas indepen-
-dientemente del tipo de éstas. Podríamos decir que se está respetando el diseño
-por contrato y por tando aplicando el principio SOLID de la sustitución de 
-Liskov.
-Si se ejecuta esta versión, pasa el test.
-Seguimos con la siguiente iteración en el siguiente commit.
+
+(Estas anotaciones están hechas despues de haber refactorizado)
+Lo único que se ha añadido es una clase auxiliar puesto que lo único duplicado
+es el método que añade cartas a cada uno de los contenedores de las entidades 
+identificadas, y se decide mover esa lógica común a otro sitio antes que hacer 
+un copia y pega tres veces, aunque reconozco que quizá me he adelantado, puesto
+que todavía no hace falta implementar esa lógica (y no está implementada) para 
+pasar el test propuesto.
