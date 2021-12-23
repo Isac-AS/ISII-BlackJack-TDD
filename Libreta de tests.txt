@@ -1,19 +1,41 @@
-En este cuarto commit se pasa a la primera fase iterativa del desarrollo
-guiado por la prueba donde se van a plantear nuevas pruebas. 
+En este quinto commit seguimos en la primera fase iterativa del desarrollo
+guiado por la prueba donde se van a plantear nuevas pruebas. Lo que ha ocurrido
+en el commit anterior, es que he creado la otra prueba de aceptación. Si 
+ejecutamos el fichero con dichas pruebas, no pasa, porque esta segunda prueba
+nos obliga a triangular e implementar la lógica necesaria. En este commit lo que
+se hará es la creación de las pruebas unitarias necesarias para probar el 
+correcto funcionamiento de las entidades planteadas. 
+Surgen las siguientes necesidades.
 
 Pruebas:
 (las puebas unitarias vendrán prefijadas por "·" y las de aceptación por "#")
 # Caso 1 -> Player1
 # Caso 2 -> [Player1, Player3]
 
+Para las cartas:
+*Se denominarán el "jack", la J, la Q y la K como figuras*
+*Las cartas tienen que tener un método que devuelva su valor*
+·Las figuras deben devolver un valor de 10
+·K,Q,J deben devolver 10
+·Las "pip cards" deben devolver un valor adecuado al pasado en su constructor
+·Pip2..10 deben devolver 2..10 respectivamente
+·Pip inicializada con un valor menor que 2 o mayor que 10 devuelve error.
+·Se hace una distinción del as, que, al tener dos valores, tendrá dos métodos
+de recuperación de su valor.
 
+Para las entidades:
+·Deben devolver el array resultante de lo que se ha añadido
 
-(Estas anotaciones están hechas despues de haber refactorizado)
-Lo único que se ha añadido es una clase auxiliar puesto que lo único duplicado
-es el método que añade cartas a cada uno de los contenedores de las entidades 
-identificadas, y se decide mover esa lógica común a otro sitio antes que hacer 
-un copia y pega tres veces, aunque reconozco que quizá me he adelantado, puesto
-que todavía no hace falta implementar esa lógica (y no está implementada) para 
-pasar el test propuesto.
-
-Se ha desarrollado la prueba para el caso 2.
+Para los métodos del juego:
+·Debe pasar los dos tests ya planteados
+*Surge la necesidad quizás de asegurar que la suma de puntuación de cada 
+conjunto de cartas es correcta. Por lo que se plantea una función adicional
+realiza esto mismo, y debe ser probada*
+·El método calculateScore devuelve 15 para una entrada de [10,5]
+·El método calculateScore devuelve 20 para una entrada de [10,J]
+·El método calculateScore devuelve 20 para una entrada de [9,2,K]
+·El método calculateScore devuelve 20 para una entrada de [7,3,Q]
+·El método calculateScore devuelve 23 para una entrada de [8,6,4,5]
+·El método calculateScore devuelve 16 para una entrada de [A,6,4,5]
+·El método calculateScore devuelve 12 para una entrada de [A,6,4,A]
+·El método calculateScore devuelve 21 para una entrada de [6,4,A]
