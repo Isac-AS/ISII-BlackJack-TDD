@@ -1,64 +1,19 @@
-Este documento va a intentar representar la libreta de pruebas que aparece en el 
-libro "Diseño Ágil con TDD" de Carlos Blé. Se incluye también el proceso de
-pensamiento así como se destaca el porqué de algunas decisiones.
-A medida que se vaya progresando en el desarrollo del programa se irá 
-acutalizando. Dicho progreso será visible observando las distintas versiones que
-se encuentran en el repositorio. Se 
-
-Me gustaría recalcar, que la primera vez que leí el enunciado, ya caí en pensar
-en la forma en la que hacer toda una partida de BlackJack. Es decir, todo el
-reparto de cartas en todas las fases de la partida, simulando decisiones 
-aleatorias por parte de los otros dos jugadores y dándole al usuario en cada 
-turno la posibilidad de hacer "hit" o "stand" (para seguir pidiendo cartas, o 
-parar)...
-
-Hasta que leo el segundo párrafo:
-"Tu tarea es completar la función que reparte cartas para el crupier (última 
-fase de la partida de Black Jack) y devuelve los jugadores que han ganado."
-
-Por lo tanto, en el repositorio se mostrarán las distintas versiones de la 
-implementación de un sistema de representación del estado final de la partida 
-así como de la función objetivo usando TDD según mi interpretación del libro 
-citado.
-
-
-Como pruebas de aceptación principales, tenemos los dos casos que aparecen al 
-final del documento.
-No los expongo aquí pero son un conjunto de manos y unos resultados esperados. 
-Tenemos la suerte de tener dos casos para poder triangular y no contentarnos 
-con el código mínimo (return Player1) en el caso de que sólamente tuviesemos 
-el caso 1.
-
-Se me ocurre que puedo empezar el desarrollo directamente escribiendo estas 
-pruebas, con sus resultados y ya después ver que es lo que irá haciendo falta 
-para continuar, así como la representación de los elementos y entidades del 
-problema.
+En este segundo commit se pasa a la segunda fase iterativa del desarrollo
+guiado por la prueba donde se va a escribir el mínimo código necesario para 
+pasar el test planteado
 
 Pruebas:
 (las puebas unitarias vendrán prefijadas por "·" y las de aceptación por "#")
 # Caso 1 -> Player1
 # Caso 2 -> [Player1, Player3]
 
-(No hace falta teardown, puesto que para este programa el garbage collector 
-será suficiente)
 
-Para este primer commit sólamente muestro el test referente al caso 1. El motivo
-principal es que solamente del test escrito, se sacan las siguientes 
-conclusiones: (Se puede poner "como mínimo" antes de cada uno de los puntos que 
-se van a mencionar a continuación)
--Hay una clase Player que representará a los jugadores
--Cada jugador consta de dos métodos (como mínimo), añadir una carta a la mano 
-(dudé entre este nombre o algo como "drawCard", pero ese nombre sugiere una 
-interacción con el mazo, cosa que aquí se obvia, puesto que de nuevo, el 
-objetivo es desarrollar el método "getWinners()", al que se le pasan unos 
-parámetros, y no tenemos ni que pensar en como acaban llegando las cartas a la 
-mano del jugador. En este caso, se agregan directamente para los casos del 
-enunciado, que podríamos considerar como los tests de aceptación que extraemos 
-y hemos acordado con el cliente), y otro método para obtener las cartas que 
-tiene en la mano.
--Existe una clase (o entidad) distinta que representa al croupier
--Al croupier también se le pueden añadir las cartas de la misma manera que a los
- jugadores así como obtenerlas (se me ocurre que podemos hacer que cumplan un 
-contrato aunque puede que no sea necesario).
--Existe un mazo que de la misma manera que las otras dos entidades contiene una 
-serie de cartas que se pueden añadir, así como obtener).
+Se ha escrito el mínimo código y se han tomado un par de decisiones importantes
+más.
+Entre estas decisiones destaco el hecho de la creación de una clase abstracta
+"Card" para simplificar la interacción de las entidades con las cartas indepen-
+dientemente del tipo de éstas. Podríamos decir que se está respetando el diseño
+por contrato y por tando aplicando el principio SOLID de la sustitución de 
+Liskov.
+Si se ejecuta esta versión, pasa el test.
+Seguimos con la siguiente iteración en el siguiente commit.

@@ -1,12 +1,10 @@
 package tests.acceptanceTests;
 
-import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import blackjack.cards.*;
+import blackjack.entities.*;
 
 public class headingTests {
     
@@ -48,14 +46,14 @@ public class headingTests {
         deck.addRemainingCard(new King());
         deck.addRemainingCard(new Pip(2));
         
-        assertEquals(players[0], 
-                blackjack.utils.getWinners(
+        assertEquals("[Player1]", 
+                blackjack.utils.gameMethods.getWinners(
                         players[0].getHand(),
                         players[1].getHand(),
                         players[2].getHand(),
                         croupier.getHand(),
                         deck.getRemainingCards()
-                ));
+                ).toString()
+        );
     }
-    
 }
