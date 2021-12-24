@@ -1,40 +1,62 @@
-En este sexto commit pasamos a desarrollar el mínimo código necesario para
-pasar las pruebas planteadas en el commit anterior.
-
-Pruebas:
-(las puebas unitarias vendrán prefijadas por "·" y las de aceptación por "#")
-# Caso 1 -> Player1
-# Caso 2 -> [Player1, Player3]
-
-Para las cartas:
-*Se denominarán el "jack", la J, la Q y la K como figuras*
-*Las cartas tienen que tener un método que devuelva su valor*
-·Las figuras deben devolver un valor de 10
-·K,Q,J deben devolver 10
-·Las "pip cards" deben devolver un valor adecuado al pasado en su constructor
-·Pip2..10 deben devolver 2..10 respectivamente
-·Pip inicializada con un valor menor que 2 o mayor que 10 devuelve error.
-·Se hace una distinción del as, que, al tener dos valores, tendrá dos métodos
-de recuperación de su valor.
-
-Para las entidades:
-·Deben devolver el array resultante de lo que se ha añadido
-
-Para los métodos del juego:
-·Debe pasar los dos tests ya planteados
-*Surge la necesidad quizás de asegurar que la suma de puntuación de cada 
-conjunto de cartas es correcta. Por lo que se plantea una función adicional
-realiza esto mismo, y debe ser probada*
-·El método calculateScore devuelve 15 para una entrada de [10,5]
-·El método calculateScore devuelve 20 para una entrada de [10,J]
-·El método calculateScore devuelve 21 para una entrada de [9,2,K]
-·El método calculateScore devuelve 20 para una entrada de [7,3,Q]
-·El método calculateScore devuelve 23 para una entrada de [8,6,4,5]
-·El método calculateScore devuelve 16 para una entrada de [A,6,4,5]
-·El método calculateScore devuelve 12 para una entrada de [A,6,4,A]
-·El método calculateScore devuelve 21 para una entrada de [6,4,A]
+En este séptimo commit me dispongo a probar una serie de casos de prueba
+adicionales:
 
 
-Pues en este commit, se ha escrito el código necesario para pasar todos los 
-test. Se han hecho cambios de refactorización y modificados ciertas clases
-como Pip para que generen excepciones específicas.
+Caso 3: Victoria del croupier con blackjack
+Player 1: "J", "A"                  (21, Black Jack)
+Player 2: "10", "5", "6"            (21)
+Player 3: "3", "6", "A", "2"        (12)
+Croupier: "Q", "A"
+Deck: "A", "4" "5"
+getWinners(...) --> [Croupier]
+
+Caso 4: Victoria del croupier sacando el blackjack
+Player 1: "J", "A"                  (21, Black Jack)
+Player 2: "3", "5", "6"             (14)
+Player 3: "3", "6", "Q", "2"        (21)
+Croupier: "A"
+Deck: "K", "4" "5"
+getWinners(...) --> [Croupier]
+
+Caso 5: Victoria de los jugadores después de que el croupier robe por encima 
+de 21
+Player 1: "10", "7"                 (17)
+Player 2: "3", "5", "6"             (14)
+Player 3: "2", "2", "8", "4"        (16)
+Croupier: "10", "6"
+Deck: "K", "4" "5"
+getWinners(...) --> [Player1, Player2, Player3]
+
+Caso 6: Victoria del croupier porque los jugadores se pasan de 21
+Player 1: "10", "7", "K"            (27)
+Player 2: "3", "5", "6", "J"        (24)
+Player 3: "2", "2", "8", "4", "Q"   (26)
+Croupier: "10", "6", "2"            (18)
+Deck: "3", "4" "5"
+getWinners(...) --> [Croupier]
+
+Caso 7: Victoria del croupier porque los jugadores se pasan todos de 21 robando
+Player 1: "10", "7", "K"            (27)
+Player 2: "3", "5", "6", "J"        (24)
+Player 3: "2", "2", "8", "4", "Q"   (26)
+Croupier: "10", "6"                 (16)
+Deck: "3", "4" "5"
+getWinners(...) --> [Croupier]
+
+Caso 8: Victoria del croupier porque ningún jugador le pasa en puntuación 
+Player 1: "10", "7"                 (17)
+Player 2: "3", "5", "6"             (14)
+Player 3: "2", "2", "8", "4"        (16)
+Croupier: "4", "5", "A"             (20)
+Deck: "K", "4" "5"
+getWinners(...) --> [Croupier]
+
+Caso 9: Victoria del croupier porque ningún jugador le pasa en puntuación robando
+Player 1: "10", "7"                 (17)
+Player 2: "3", "5", "6"             (14)
+Player 3: "2", "2", "8", "4"        (16)
+Croupier: "4", "5"                  (9)
+Deck: "K", "4" "5"
+getWinners(...) --> [Croupier]
+
+Se observa como tras implementar estos casos, ¡sólo dos pasan!
