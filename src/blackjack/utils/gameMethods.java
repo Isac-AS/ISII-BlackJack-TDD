@@ -26,6 +26,10 @@ public class gameMethods {
         if (gameMethods.isBlackjack(croupierBet)) {
             winners.add("Croupier");
             return winners;
+        } else if(calculateScore(croupierBet) > 21) {
+            winners.add("Player1");
+            winners.add("Player2");
+            winners.add("Player3");
         } else {
             int croupierScore = calculateScore(croupierBet);
             for (int i = 0; i < playerHands.length; i++) {
@@ -37,6 +41,9 @@ public class gameMethods {
                 if (playerScore > croupierScore && playerScore <= 21){
                     winners.add("Player" + (i + 1));
                 }
+            }
+            if (winners.isEmpty()) {
+                winners.add("Croupier");
             }
         }
         return winners;

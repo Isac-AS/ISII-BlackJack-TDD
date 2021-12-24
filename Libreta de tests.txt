@@ -1,62 +1,6 @@
-En este séptimo commit me dispongo a probar una serie de casos de prueba
-adicionales:
+En este octavo commit se ha escrito el código necesario para resolver
+los casos planteados. Dado que no había mucho que agregar, y se cubren bastantes
+casos, esta versión es una buena candidata para ser la final.
+(A menos que haya otra por encima, tome esta como final).
 
 
-Caso 3: Victoria del croupier con blackjack
-Player 1: "J", "A"                  (21, Black Jack)
-Player 2: "10", "5", "6"            (21)
-Player 3: "3", "6", "A", "2"        (12)
-Croupier: "Q", "A"
-Deck: "A", "4" "5"
-getWinners(...) --> [Croupier]
-
-Caso 4: Victoria del croupier sacando el blackjack
-Player 1: "J", "A"                  (21, Black Jack)
-Player 2: "3", "5", "6"             (14)
-Player 3: "3", "6", "Q", "2"        (21)
-Croupier: "A"
-Deck: "K", "4" "5"
-getWinners(...) --> [Croupier]
-
-Caso 5: Victoria de los jugadores después de que el croupier robe por encima 
-de 21
-Player 1: "10", "7"                 (17)
-Player 2: "3", "5", "6"             (14)
-Player 3: "2", "2", "8", "4"        (16)
-Croupier: "10", "6"
-Deck: "K", "4" "5"
-getWinners(...) --> [Player1, Player2, Player3]
-
-Caso 6: Victoria del croupier porque los jugadores se pasan de 21
-Player 1: "10", "7", "K"            (27)
-Player 2: "3", "5", "6", "J"        (24)
-Player 3: "2", "2", "8", "4", "Q"   (26)
-Croupier: "10", "6", "2"            (18)
-Deck: "3", "4" "5"
-getWinners(...) --> [Croupier]
-
-Caso 7: Victoria del croupier porque los jugadores se pasan todos de 21 robando
-Player 1: "10", "7", "K"            (27)
-Player 2: "3", "5", "6", "J"        (24)
-Player 3: "2", "2", "8", "4", "Q"   (26)
-Croupier: "10", "6"                 (16)
-Deck: "3", "4" "5"
-getWinners(...) --> [Croupier]
-
-Caso 8: Victoria del croupier porque ningún jugador le pasa en puntuación 
-Player 1: "10", "7"                 (17)
-Player 2: "3", "5", "6"             (14)
-Player 3: "2", "2", "8", "4"        (16)
-Croupier: "4", "5", "A"             (20)
-Deck: "K", "4" "5"
-getWinners(...) --> [Croupier]
-
-Caso 9: Victoria del croupier porque ningún jugador le pasa en puntuación robando
-Player 1: "10", "7"                 (17)
-Player 2: "3", "5", "6"             (14)
-Player 3: "2", "2", "8", "4"        (16)
-Croupier: "4", "5"                  (9)
-Deck: "K", "4" "5"
-getWinners(...) --> [Croupier]
-
-Se observa como tras implementar estos casos, ¡sólo dos pasan!
