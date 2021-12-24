@@ -51,7 +51,6 @@ public class HeadingTests {
         );
     }
     
-    
     @Test
     public void caso2() throws Pip.ValueLowerThanMinimumException, Pip.ValueHigherThanMaximumException {
         
