@@ -3,15 +3,10 @@ package tests.unitTests;
 import blackjack.cards.*;
 import blackjack.entities.*;
 import java.util.ArrayList;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class EntitiesUnitTetsts {
-    
-    @Before
-    public void setUp() {
-    }
     
     @Test
     public void testPlayerHandWithFigures() {
@@ -21,12 +16,18 @@ public class EntitiesUnitTetsts {
         player.addCardToHand(new Queen());
         player.addCardToHand(new Jack());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new King());
-        result.add(new Queen());
-        result.add(new Jack());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new King());
+        expectedOutcome.add(new Queen());
+        expectedOutcome.add(new Jack());
         
-        assertTrue(result.equals(player.getHand()));
+        ArrayList<Card> playerHand = player.getHand();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
     
     @Test
@@ -37,28 +38,40 @@ public class EntitiesUnitTetsts {
         player.addCardToHand(new Ace());
         player.addCardToHand(new Jack());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new King());
-        result.add(new Ace());
-        result.add(new Jack());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new King());
+        expectedOutcome.add(new Ace());
+        expectedOutcome.add(new Jack());
         
-        assertTrue(result.equals(player.getHand()));
+        ArrayList<Card> playerHand = player.getHand();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
     
     @Test
-    public void testPlayerHandWithPipFigureAndAce() {
+    public void testPlayerHandWithPipFigureAndAce() throws Pip.ValueLowerThanMinimumException, Pip.ValueHigherThanMaximumException {
         Player player = new Player();
         
         player.addCardToHand(new Pip(6));
         player.addCardToHand(new Queen());
         player.addCardToHand(new Ace());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new Pip(6));
-        result.add(new Queen());
-        result.add(new Ace());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new Pip(6));
+        expectedOutcome.add(new Queen());
+        expectedOutcome.add(new Ace());
         
-        assertTrue(result.equals(player.getHand()));
+        ArrayList<Card> playerHand = player.getHand();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
     
     
@@ -70,12 +83,18 @@ public class EntitiesUnitTetsts {
         croupier.addCardToHand(new Queen());
         croupier.addCardToHand(new Jack());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new King());
-        result.add(new Queen());
-        result.add(new Jack());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new King());
+        expectedOutcome.add(new Queen());
+        expectedOutcome.add(new Jack());
         
-        assertTrue(result.equals(croupier.getHand()));
+        ArrayList<Card> playerHand = croupier.getHand();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
     
     @Test
@@ -86,28 +105,40 @@ public class EntitiesUnitTetsts {
         croupier.addCardToHand(new Ace());
         croupier.addCardToHand(new Jack());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new King());
-        result.add(new Ace());
-        result.add(new Jack());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new King());
+        expectedOutcome.add(new Ace());
+        expectedOutcome.add(new Jack());
         
-        assertTrue(result.equals(croupier.getHand()));
+        ArrayList<Card> playerHand = croupier.getHand();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
     
     @Test
-    public void testCroupierHandWithPipFigureAndAce() {
+    public void testCroupierHandWithPipFigureAndAce() throws Pip.ValueLowerThanMinimumException, Pip.ValueHigherThanMaximumException {
         Croupier croupier = new Croupier();
         
         croupier.addCardToHand(new Pip(6));
         croupier.addCardToHand(new Queen());
         croupier.addCardToHand(new Ace());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new Pip(6));
-        result.add(new Queen());
-        result.add(new Ace());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new Pip(6));
+        expectedOutcome.add(new Queen());
+        expectedOutcome.add(new Ace());
         
-        assertTrue(result.equals(croupier.getHand()));
+        ArrayList<Card> playerHand = croupier.getHand();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
     
     
@@ -119,12 +150,18 @@ public class EntitiesUnitTetsts {
         deck.addRemainingCard(new Queen());
         deck.addRemainingCard(new Jack());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new King());
-        result.add(new Queen());
-        result.add(new Jack());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new King());
+        expectedOutcome.add(new Queen());
+        expectedOutcome.add(new Jack());
         
-        assertTrue(result.equals(deck.getRemainingCards()));
+        ArrayList<Card> playerHand = deck.getRemainingCards();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
     
     @Test
@@ -135,27 +172,39 @@ public class EntitiesUnitTetsts {
         deck.addRemainingCard(new Ace());
         deck.addRemainingCard(new Jack());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new King());
-        result.add(new Ace());
-        result.add(new Jack());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new King());
+        expectedOutcome.add(new Ace());
+        expectedOutcome.add(new Jack());
         
-        assertTrue(result.equals(deck.getRemainingCards()));
+        ArrayList<Card> playerHand = deck.getRemainingCards();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
     
     @Test
-    public void testDeckRemainingCardsWithPipFigureAndAce() {
+    public void testDeckRemainingCardsWithPipFigureAndAce() throws Pip.ValueLowerThanMinimumException, Pip.ValueLowerThanMinimumException, Pip.ValueHigherThanMaximumException, Pip.ValueHigherThanMaximumException {
         Deck deck = new Deck();
         
         deck.addRemainingCard(new Pip(6));
         deck.addRemainingCard(new Queen());
         deck.addRemainingCard(new Ace());
         
-        ArrayList<Card> result = new ArrayList<>();
-        result.add(new Pip(6));
-        result.add(new Queen());
-        result.add(new Ace());
+        ArrayList<Card> expectedOutcome = new ArrayList<>();
+        expectedOutcome.add(new Pip(6));
+        expectedOutcome.add(new Queen());
+        expectedOutcome.add(new Ace());
         
-        assertTrue(result.equals(deck.getRemainingCards()));
+        ArrayList<Card> playerHand = deck.getRemainingCards();
+        for (int i = 0; i < expectedOutcome.size(); i++) {
+            assertEquals(playerHand.get(i).getClass(),
+                    expectedOutcome.get(i).getClass());
+            assertEquals(playerHand.get(i).getValue(),
+                    expectedOutcome.get(i).getValue());
+        }
     }
 }

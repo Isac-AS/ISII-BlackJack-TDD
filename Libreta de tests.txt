@@ -1,11 +1,5 @@
-En este quinto commit seguimos en la primera fase iterativa del desarrollo
-guiado por la prueba donde se van a plantear nuevas pruebas. Lo que ha ocurrido
-en el commit anterior, es que he creado la otra prueba de aceptación. Si 
-ejecutamos el fichero con dichas pruebas, no pasa, porque esta segunda prueba
-nos obliga a triangular e implementar la lógica necesaria. En este commit lo que
-se hará es la creación de las pruebas unitarias necesarias para probar el 
-correcto funcionamiento de las entidades planteadas. 
-Surgen las siguientes necesidades.
+En este sexto commit pasamos a desarrollar el mínimo código necesario para
+pasar las pruebas planteadas en el commit anterior.
 
 Pruebas:
 (las puebas unitarias vendrán prefijadas por "·" y las de aceptación por "#")
@@ -33,9 +27,14 @@ conjunto de cartas es correcta. Por lo que se plantea una función adicional
 realiza esto mismo, y debe ser probada*
 ·El método calculateScore devuelve 15 para una entrada de [10,5]
 ·El método calculateScore devuelve 20 para una entrada de [10,J]
-·El método calculateScore devuelve 20 para una entrada de [9,2,K]
+·El método calculateScore devuelve 21 para una entrada de [9,2,K]
 ·El método calculateScore devuelve 20 para una entrada de [7,3,Q]
 ·El método calculateScore devuelve 23 para una entrada de [8,6,4,5]
 ·El método calculateScore devuelve 16 para una entrada de [A,6,4,5]
 ·El método calculateScore devuelve 12 para una entrada de [A,6,4,A]
 ·El método calculateScore devuelve 21 para una entrada de [6,4,A]
+
+
+Pues en este commit, se ha escrito el código necesario para pasar todos los 
+test. Se han hecho cambios de refactorización y modificados ciertas clases
+como Pip para que generen excepciones específicas.

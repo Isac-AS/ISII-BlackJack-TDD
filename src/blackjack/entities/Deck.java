@@ -5,15 +5,14 @@ import java.util.ArrayList;
 
 public class Deck {
 
-    public Deck() {
-    }
+    final private ArrayList<Card> remainingCards = new ArrayList<>();
     
     public void addRemainingCard(Card card) {
-        
+        remainingCards.add(card);
     }
     
     public ArrayList<Card> getRemainingCards() {
-        return null;
+        return remainingCards;
     }
     
 }

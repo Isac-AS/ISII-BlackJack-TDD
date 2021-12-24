@@ -1,15 +1,10 @@
 package tests.unitTests;
 
 import blackjack.cards.*;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CardsUnitTetsts {
-
-    @Before
-    public void setUp() {
-    }
 
     @Test
     public void testFiguresValues() {
@@ -24,49 +19,48 @@ public class CardsUnitTetsts {
     }
 
     @Test
-    public void testPipcardsValues() {
-        for (int i = 1; i < 11; i++) {
+    public void testPipcardsValues() throws Pip.ValueLowerThanMinimumException, Pip.ValueHigherThanMaximumException {
+        for (int i = 2; i < 11; i++) {
             Card tempPip = new Pip(i);
             assertEquals(i, tempPip.getValue());
         }
     }
 
     @Test
-    public void testPipCardWithValue1() {
+    public void testPipCardWithValue1() throws Pip.ValueHigherThanMaximumException {
         try {
             Card pip1 = new Pip(1);
-        } catch (ValueLowerThanMinimumException e) {}
+        } catch (Pip.ValueLowerThanMinimumException e) {}
     }
 
     @Test
-    public void testPipCardWithValuesLowerThan2() {
+    public void testPipCardWithValuesLowerThan2() throws Pip.ValueHigherThanMaximumException {
         for (int i = -8; i < 1; i++) {
             try {
-                Card pip1 = new Pip(0);
-            } catch (ValueLowerThanMinimumException e) {}
+                Card pip1 = new Pip(i);
+            } catch (Pip.ValueLowerThanMinimumException e) {}
         }
     }
 
     @Test
-    public void testPipCardWithValue11() {
+    public void testPipCardWithValue11() throws Pip.ValueLowerThanMinimumException {
         try {
             Card pip1 = new Pip(11);
-        } catch (ValueHigherThanMaximumException e) {}
+        } catch (Pip.ValueHigherThanMaximumException e) {}
     }
 
     @Test
-    public void testPipCardWithValuesHigherThan11() {
+    public void testPipCardWithValuesHigherThan11() throws Pip.ValueLowerThanMinimumException {
         for (int i = 12; i < 20; i++) {
             try {
-                Card pip1 = new Pip(0);
-            } catch (ValueHigherThanMaximumException e) {}
+                Card pip1 = new Pip(i);
+            } catch (Pip.ValueHigherThanMaximumException e) {}
         }
     }
 
     @Test
-    public void testAceValues() {
-        Card Ace = new Ace();
-        assertEquals(1, Ace.getOneAsValue());
-        assertEquals(11, Ace.getElevenAsValue());
+    public void testAceValue() {
+        Card ace = new Ace();
+        assertEquals(11, ace.getValue());
     }
 }
