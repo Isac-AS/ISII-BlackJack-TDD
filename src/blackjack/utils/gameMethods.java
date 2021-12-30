@@ -27,9 +27,11 @@ public class gameMethods {
             winners.add("Croupier");
             return winners;
         } else if(calculateScore(croupierBet) > 21) {
-            winners.add("Player1");
-            winners.add("Player2");
-            winners.add("Player3");
+            for (int i = 0; i < playerHands.length; i++) {
+                if (calculateScore(playerHands[i]) <= 21){
+                    winners.add("Player" + (i + 1));
+                }
+            }
         } else {
             int croupierScore = calculateScore(croupierBet);
             for (int i = 0; i < playerHands.length; i++) {

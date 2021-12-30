@@ -1,6 +1,4 @@
-En este octavo commit se ha escrito el código necesario para resolver
-los casos planteados. Dado que no había mucho que agregar, y se cubren bastantes
-casos, esta versión es una buena candidata para ser la final.
-(A menos que haya otra por encima, tome esta como final).
+Noveno commit, se soluciona un ligero error de caso de prueba.
+(Línea 30 de la clase gameMethods)
 
 
